@@ -1,13 +1,28 @@
+// src/App.tsx
 import React from "react";
-import { RouterProvider } from "react-router-dom";
-import router from "./router";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 
-function App() {
+import Home from "@/pages/Home";
+import About from "@/pages/About";
+
+// 主应用组件
+const App: React.FC = () => {
   return (
-    <div>
-      <RouterProvider router={router} />
-    </div>
+    <BrowserRouter>
+      <div id="app">
+        {/* 导航栏 */}
+        <div id="nav">
+          <Link to="/home">Home</Link> | <Link to="/about">About</Link>
+        </div>
+
+        {/* 路由视图 */}
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
