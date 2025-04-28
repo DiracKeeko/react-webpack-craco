@@ -1,0 +1,15 @@
+// 文字 一行省略
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 文字 两行省略
+.ellipsis-2line {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; // 两行省略
+  overflow: hidden;
+  word-break: break-all; // 强制换行
+}
