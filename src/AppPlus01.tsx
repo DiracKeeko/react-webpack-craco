@@ -12,39 +12,40 @@ const routes = [
 // 主应用组件
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <div id="app">
-        {/* 导航栏 */}
-        <div id="nav">
-          01
-          {routes.map((route) => {
-            return (
-              <>
-                <Link to={route.path}>{route.component}</Link> | 
-              </>
-            );
-          })}
-        </div>
-
-        {/* 路由视图 */}
-        <Suspense>
-          <Routes>
+    <>
+      <BrowserRouter>
+        <div id="app" key={"root-app"}>
+          {/* 导航栏 */}
+          <div id="nav">
+            AppPlus01
             {routes.map((route) => {
-              const Component = lazy(
-                () => import(`@/pages/${route.component}`)
-              );
               return (
-                <Route
-                  key={route.path}
-                  path={route.path}
-                  element={<Component />}
-                />
+                <React.Fragment key={route.component}>
+                  <Link to={route.path}>{route.component}</Link>|
+                </React.Fragment>
               );
             })}
-          </Routes>
-        </Suspense>
-      </div>
-    </BrowserRouter>
+          </div>
+          {/* 路由视图 */}
+          <Suspense>
+            <Routes>
+              {routes.map((route) => {
+                const Component = lazy(
+                  () => import(`@/pages/${route.component}`)
+                );
+                return (
+                  <Route
+                    key={route.path}
+                    path={route.path}
+                    element={<Component />}
+                  />
+                );
+              })}
+            </Routes>
+          </Suspense>
+        </div>
+      </BrowserRouter>
+    </>
   );
 };
 

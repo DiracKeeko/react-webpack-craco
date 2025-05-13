@@ -16,12 +16,13 @@ const App: React.FC = () => {
       <div id="app">
         {/* 导航栏 */}
         <div id="nav">
-          02
+        AppPlus02
           {routes.map((route) => {
             return (
-              <>
-                <Link to={route.path}>{route.component}</Link> |
-              </>
+              // React 要求 key 设置在 map 出来的最外层元素上，因此这里不能用<></>，改用Fragment
+              <React.Fragment key={route.path}>
+                <Link to={route.path}>{route.component}</Link>|
+              </React.Fragment>
             );
           })}
         </div>

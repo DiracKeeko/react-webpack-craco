@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import "@/style/index.less";
 
-import App from "./AppPlus02";
+import App from "./AppPlus01";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
